@@ -187,14 +187,22 @@ void _init(void)
     libcurt = native_libload("libcudart.so");   
     libnvml = native_libload("libnvidia-ml.so"); 
 
+    nvmlDevice_t device;
+    int64_t (*f1)() = native_funload(libnvml, "nvmlDeviceGetHandleByIndex");
+    NVML_CALL(f1, 0, &device); 
+    
+    nvmlMemory_t mem;
+    int64_t (*f2)() = native_funload(libnvml, "nvmlDeviceGetMemoryInfo");
+    NVML_CALL(f2, device, &mem);
+    
     usr = getusrbyuid(geteuid()); //getenv("USER");
     char did[16] = {0,}; // reserved, device id
     char val[16] = {0,};
     if (parse(PROFILE, usr, did, val)) usr_fraction = atof(val); 
     usr_fraction = MIN(1, MAX(0, usr_fraction));    
 
-    char *mem = getenv("GPU_FRACTION"); // clamped value 0~1.0 
-    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem);
+    char *mem = getenv("GPU_MEMORY"); // GB 
+    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem * 1024 * 1024 *1024 / memory->total);
     prs_fraction = MIN(1, MAX(0, prs_fraction));
 
     if (pid < 0)
