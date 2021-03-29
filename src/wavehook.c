@@ -202,7 +202,7 @@ void _init(void)
     usr_fraction = MIN(1, MAX(0, usr_fraction));    
 
     char *mem = getenv("GPU_MEMORY"); // GB 
-    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem) * 1024 * 1024 * 1024 / memory.total);
+    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem) * 1024 * 1024 * 1024 / memory.total;
     prs_fraction = MIN(1, MAX(0, prs_fraction));
 
     if (pid < 0)
