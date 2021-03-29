@@ -191,9 +191,9 @@ void _init(void)
     int64_t (*f1)() = native_funload(libnvml, "nvmlDeviceGetHandleByIndex");
     NVML_CALL(f1, 0, &device); 
     
-    nvmlMemory_t mem;
+    nvmlMemory_t memory;
     int64_t (*f2)() = native_funload(libnvml, "nvmlDeviceGetMemoryInfo");
-    NVML_CALL(f2, device, &mem);
+    NVML_CALL(f2, device, &memory);
     
     usr = getusrbyuid(geteuid()); //getenv("USER");
     char did[16] = {0,}; // reserved, device id
@@ -202,7 +202,7 @@ void _init(void)
     usr_fraction = MIN(1, MAX(0, usr_fraction));    
 
     char *mem = getenv("GPU_MEMORY"); // GB 
-    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem * 1024 * 1024 *1024 / memory->total);
+    if (mem == NULL) prs_fraction = 1; else prs_fraction = atof(mem * 1024 * 1024 * 1024 / memory->total);
     prs_fraction = MIN(1, MAX(0, prs_fraction));
 
     if (pid < 0)
