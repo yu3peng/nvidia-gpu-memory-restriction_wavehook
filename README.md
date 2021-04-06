@@ -15,11 +15,15 @@ step0
 
 get wavehook.so
 
-step1. export LD_PRELOAD=/path/wavehook.so
+step1
 
-step2. export GPU_MEMORY=1
+1. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it tensorflow/tensorflow:2.2.2-gpu-py3 bash
+2. export LD_PRELOAD=/nvidia-gpu-memory-restriction_wavehook/src/wavehook.so
+3. export GPU_MEMORY=200
 
-step3. run tensorflow_program
+step2
+1. cd /nvidia-gpu-memory-restriction_wavehook/CNN
+2. python TensorFlow_example.py
 
 This Program intercept function cuMemGetInfo, cuMemGetInfo_v2, cuDeviceGetName, and another mainly methods in nVidia Driver.
 Please refer to source program ...
