@@ -6,7 +6,7 @@ import tensorflow as tf
 from numpy.random import RandomState 
 #导入numpy工具包，生成模拟数据集 
  
-batch_size = 8 
+batch_size = 10 
 #定义训练数据batch的大小 
  
 w1 = tf.Variable(tf.random_normal([2,3],stddev=1,seed=1)) 
@@ -43,7 +43,7 @@ with tf.Session() as sess:
  print(sess.run(w2)) 
  #打印出训练网络之前网络参数的值 
  
- STEPS = 5000 
+ STEPS = 500000 
  #设置训练的轮数 
  for i in range(STEPS): 
   start = (i * batch_size) % dataset_size 
