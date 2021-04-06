@@ -4,7 +4,7 @@ wavehook functions restrict and isolate nVidia GPU memory.
 step0
 
 1. https://www.katacoda.com/courses/ubuntu/playground
-2. git clone https://github.com/waveware4ai/nvidia-gpu-memory-restriction_wavehook.git
+2. git clone https://github.com/yu3peng/nvidia-gpu-memory-restriction_wavehook.git
 3. cd nvidia-gpu-memory-restriction_wavehook/src
 4. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it nvidia/cuda:11.2.2-devel-ubuntu20.04 bash
 5. cd /nvidia-gpu-memory-restriction_wavehook/src
