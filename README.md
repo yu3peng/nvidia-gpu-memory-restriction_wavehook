@@ -17,7 +17,7 @@ get wavehook.so
 
 step1. export LD_PRELOAD=/path/wavehook.so
 
-step2. export GPU_FRACTION=0.01 ~ 1.0
+step2. export GPU_MEMORY=1
 
 step3. run tensorflow_program
 
