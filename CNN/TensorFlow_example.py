@@ -1,3 +1,4 @@
+# -*- coding: UTF-8 -*-
 # [TensorFlow平台下Python实现神经网络](https://www.yisu.com/zixun/179765.html)
 
 import tensorflow as tf 
