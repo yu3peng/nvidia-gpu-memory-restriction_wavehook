@@ -8,8 +8,8 @@ step0
 3. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it nvidia/cuda:11.3.0-devel-ubuntu18.04 bash
 4. cd /nvidia-gpu-memory-restriction_wavehook/src
 5. chmod 755 wavehook.make.sh
-6. export CPATH=$CPATH:/usr/local/cuda-11.2/targets/x86_64-linux/include
-7. export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-11.2/targets/x86_64-linux/include
+6. export CPATH=$CPATH:/usr/local/cuda-11.3/targets/x86_64-linux/include
+7. export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/cuda-11.3/targets/x86_64-linux/include
 8. ./wavehook.make.sh
 
 get wavehook.so
