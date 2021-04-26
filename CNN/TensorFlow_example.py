@@ -10,7 +10,7 @@ from numpy.random import RandomState
 batch_size = 10 
 #定义训练数据batch的大小 
  
-w1 = tf.Variable(tf.random_normal([2,3],stddev=1,seed=1)) 
+w1 = tf.Variable(tf.random.uniform([2,3],stddev=1,seed=1)) 
 w2 = tf.Variable(tf.random_normal([3,1],stddev=1,seed=1)) 
 #分别定义一二层和二三层之间的网络参数，标准差为1，随机产生的数保持一致 
  
