@@ -9,7 +9,7 @@
 #include <dlfcn.h>
 #include "wavehook.h"
  
-#include <cuda.h>
+#include "cuda.h"
 
 #define __CUDA_API_VERSION_INTERNAL
 
