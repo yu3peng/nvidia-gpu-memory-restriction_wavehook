@@ -23,9 +23,6 @@ void*libcurt = NULL;
 void*libnvml = NULL;
 void*native_libload(char*so)
 {
-  //print_backtrace();
-  //print_trace();
-  //print_walk_through();
     void*lib = dlopen(so, RTLD_NOW); //RTLD_NOW, RTLD_LAZY, RTLD_GLOBAL
     if (NULL == lib) 
     {
@@ -50,30 +47,13 @@ int    pid = -1;
 float  usr_fraction = 1;
 float  prs_fraction = 1;
 
-#include "nvml.h"
+#include <nvml.h>
 
 #define NVML_CALL(func, ...)  {  nvmlReturn_t DECLDIR status = func(__VA_ARGS__); }
 
 
 size_t getGPUMemUsageByUser()
 {
-    // id -u username : user name to user id
-    // ps -u -p 1234 ; pid's user name 
-    // ps f -o user,pgrp,pid,pcpu,pmem,start,time,command
-    
-/*
-zookim@w011:~/wavehook.test$ ps f -o pid
-  PID
-30489
-27974
-21112
-19200
-
-zookim@w011:~/wavehook.test$ nvidia-smi --query-compute-apps=pid,used_memory --format=csv,noheader,nounits
-27658, python, 11614 MiB
-
-*/    
-
     int pls[32]; // pid list
     int mls[32]; // mem list
     getpidbyusr(usr, 32, pls);
@@ -126,40 +106,6 @@ int MemIsolator(size_t*free, size_t*total)
         printf("[INF] GPU alloc %5zu MiB (%5zuB)\n", memAlloc / 1024 / 1024, memAlloc);
         printf("########################\n"); 
     }
-        
-    
-/*
-    if (0)
-    {
-        nvmlDevice_t device;
-        int64_t (*f1)() = native_funload(libnvml, "nvmlDeviceGetHandleByIndex");
-        NVML_CALL(f1, 0, &device);
-        
-        nvmlMemory_t mem;
-        int64_t (*f2)() = native_funload(libnvml, "nvmlDeviceGetMemoryInfo");
-        NVML_CALL(f2, device, &mem);
-  
-        nvmlUtilization_t util;
-        int64_t (*f3)() = native_funload(libnvml, "nvmlDeviceGetUtilizationRates");
-        NVML_CALL(f3, device, &util);
-
-        unsigned int pa_count=0;
-        unsigned int*pa=NULL;
-        int64_t (*f4)() = native_funload(libnvml, "nvmlDeviceGetAccountingPids");
-        NVML_CALL(f4, device, &pa_count, pa);
-        
-          printf("[INF] %d\n", pa_count);
-        
-        for(int j=0; j<pa_count; j++) 
-        {
-            nvmlAccountingStats_t stat;
-            int64_t (*f5)() = native_funload(libnvml, "nvmlDeviceGetAccountingStats");
-            NVML_CALL(f5, device, pa[j], &stat);
-            
-            // per process accounting (cumulative) statistics 
-            printf("%4d %4d %4d %4d %6d\n", 0, pa[j], stat.gpuUtilization, stat.memoryUtilization, stat.maxMemoryUsage/1024/1024);
-        }
-    }*/      
 }
 
 int DevNameIsolator(char*name)
@@ -172,8 +118,6 @@ int DevNameIsolator(char*name)
     if (0) printf("%s\n", buf);
     strcpy(name, buf);    
 }
-
-///////////////////////////////////////////////////////////////////////////////
 
 void handler(int signal) 
 {
