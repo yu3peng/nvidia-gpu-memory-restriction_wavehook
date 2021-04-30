@@ -9,7 +9,7 @@
 #include <dlfcn.h>
 #include "wavehook.h"
  
-#include "cuda.h"
+#include <cuda.h>
 
 #define __CUDA_API_VERSION_INTERNAL
 
@@ -18,7 +18,6 @@ extern void*libcuda;
 extern void*native_funload(void*lib, char*fun);
 
 extern int dbg; 
-
 
 #undef cuMemGetInfo
 CUresult CUDAAPI cuMemGetInfo(size_t *free, size_t *total)
@@ -63,4 +62,3 @@ CUresult CUDAAPI cuDeviceComputeCapability(int *major, int *minor, CUdevice dev)
     CUDA_CALL(fp, major, minor, dev);
     return 0;
 }
-
