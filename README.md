@@ -5,6 +5,7 @@ step0
 
 1. https://www.katacoda.com/courses/ubuntu/playground
 2. git clone https://github.com/yu3peng/nvidia-gpu-memory-restriction_wavehook.git
+# The compilation environment
 3. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it nvidia/cuda:10.0-devel-ubuntu18.04 bash
 4. cd /nvidia-gpu-memory-restriction_wavehook/src
 5. chmod 755 wavehook.make.sh
@@ -16,6 +17,7 @@ get wavehook.so
 
 step1
 
+# The version of tensorflow needs to be consistent with the version of cuda
 1. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it tensorflow/tensorflow:1.13.1-gpu-py3 bash
 2. export LD_PRELOAD=/nvidia-gpu-memory-restriction_wavehook/src/wavehook.so
 3. export GPU_MEMORY=200
