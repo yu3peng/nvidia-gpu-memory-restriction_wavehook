@@ -50,7 +50,7 @@ int    pid = -1;
 float  usr_fraction = 1;
 float  prs_fraction = 1;
 
-#include <nvml.h>
+#include "nvml.h"
 
 #define NVML_CALL(func, ...)  {  nvmlReturn_t DECLDIR status = func(__VA_ARGS__); }
 
