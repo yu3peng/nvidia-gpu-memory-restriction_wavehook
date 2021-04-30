@@ -8,7 +8,7 @@
 #include <dlfcn.h>
 #include "wavehook.h"
 
-#include <nvml.h>
+#include "nvml.h"
 
 
 #define NVML_CALL(func, ...)  {  nvmlReturn_t DECLDIR status = func(__VA_ARGS__); }
