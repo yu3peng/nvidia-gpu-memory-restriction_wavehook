@@ -5,7 +5,6 @@ step0
 
 1. https://www.katacoda.com/courses/ubuntu/playground
 2. git clone https://github.com/yu3peng/nvidia-gpu-memory-restriction_wavehook.git
-`The compilation environment`
 3. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it nvidia/cuda:10.0-devel-ubuntu18.04 bash
 4. cd /nvidia-gpu-memory-restriction_wavehook/src
 5. chmod 755 wavehook.make.sh
