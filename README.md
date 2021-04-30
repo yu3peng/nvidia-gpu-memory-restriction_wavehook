@@ -16,7 +16,7 @@ get wavehook.so
 
 step1
 
-1. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it tensorflow/tensorflow:2.2.2-gpu-py3 bash
+1. docker run -v /root/nvidia-gpu-memory-restriction_wavehook:/nvidia-gpu-memory-restriction_wavehook -it tensorflow/tensorflow:1.13.1-gpu-py3 bash
 2. export LD_PRELOAD=/nvidia-gpu-memory-restriction_wavehook/src/wavehook.so
 3. export GPU_MEMORY=200
 
