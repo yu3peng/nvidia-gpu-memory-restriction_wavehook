@@ -8,9 +8,7 @@
 #include <dlfcn.h>
 #include "wavehook.h"
 
-//#include <cuda_runtime.h>
-#include <cuda_runtime.h>
-
+#include "cuda_runtime.h"
 
 #define CURT_CALL(func, ...)  {  cudaError_t CUDARTAPI status = func(__VA_ARGS__); }
 extern void*libcurt;
